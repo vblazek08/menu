@@ -1,0 +1,40 @@
+---
+import { Menu } from "lucide-astro";
+---
+
+<script>
+  const button = document.querySelector("#button");
+  const menu = document.querySelector("#menu");
+  let isMenuOpen: boolean = false;
+
+  if (!button) {
+    return;
+  }
+
+  if (!menu) {
+    return;
+  }
+
+  button.addEventListener("click", () => {
+    console.log("click");
+    isMenuOpen = !isMenuOpen;
+    menu.setAttribute("data-open", isMenuOpen.toString());
+  });
+</script>
+
+<nav>
+  <div class="space-between flex items-center justify-between p-4">
+    <a href="/"><p class="text-xl">logo</p></a>
+    <button id="button" class="sm:hidden"><Menu /></button>
+  </div>
+  <div
+    id="menu"
+    class="w-full bg-gray-800 p-4 text-white data-[open]:bg-red-500"
+  >
+    <ul>
+      <li><p>home</p></li>
+      <li><p>contac</p></li>
+      <li><p>about</p></li>
+    </ul>
+  </div>
+</nav>
