@@ -5,20 +5,17 @@ import { Menu } from "lucide-astro";
 <script>
   const button = document.querySelector("#button");
   const menu = document.querySelector("#menu");
-  let isMenuOpen: boolean = false;
+  let isMenuOpen = false;
 
-  if (!button) {
-    return;
-  }
-
-  if (!menu) {
-    return;
-  }
-
-  button.addEventListener("click", () => {
+  button!.addEventListener("click", () => {
     console.log("click");
-    isMenuOpen = !isMenuOpen;
-    menu.setAttribute("data-open", isMenuOpen.toString());
+    if (isMenuOpen) {
+      menu!.classList.remove("hidden");
+      isMenuOpen = false;
+    } else {
+      menu!.classList.add("hidden");
+      isMenuOpen = true;
+    }
   });
 </script>
 
